@@ -204,7 +204,7 @@
 
 	```
 19. Подключился со своей машины к серверу с помощью pgadmin4
-	(connect from pgadmin)[https://github.com/jfdhdss/OTUS_Postgresql_course2024/blob/main/pic/pgadmin.png]
+	(connect from pgadmin)[https://raw.githubusercontent.com/jfdhdss/OTUS_Postgresql_course2024/main/pic/pgadmin.png]
 	
 20. Удалил контайнер. Как правильно останавливать базу данных в контейнере, чтобы не потерять данные?
 	```
