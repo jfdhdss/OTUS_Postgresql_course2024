@@ -5,7 +5,7 @@
     kda@otus-db-postgre-work02:~$ sudo apt update
     ```
 
-3. установим набор пакетов, необходимый для доступа к репозиториям по протоколу HTTPS:
+3. Установил набор пакетов, необходимый для доступа к репозиториям по протоколу HTTPS:
 	-	apt-transport-https — активирует передачу файлов и данных через https;
 	-	ca-сertificates — активирует проверку сертификаты безопасности;
 	-	curl — утилита для обращения к веб-ресурсам;
@@ -138,14 +138,14 @@
 	docker run -it postgres:14 psql -U postgre -h kda-work02-docker -p 5432
 	psql: error: could not translate host name "kda-work02-docker" to address: Name or service not known
 	```
-14. Убиваем контейнер с postgres.
+14. Убил контейнер с postgres.
 	```
 	kda@otus-db-postgre-work02:~$ docker rm -f kda-work02-docker
 	kda-work02-docker
 	kda@otus-db-postgre-work02:~$ docker ps
 	CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 	```
-15. Создаем сеть для docker
+15. Создал сеть для docker
 	```
 	kda@otus-db-postgre-work02:~$ docker network create work
 	cf5bca2f85f3b758c87820337af7458c446932a9492e6ecd968310383eea5f35
@@ -156,7 +156,7 @@
 	9126dea52147   none      null      local
 	cf5bca2f85f3   work      bridge    local
 	```
-16. Заново разворачиваем контейнер
+16. Заново развернул контейнер
 	```
     docker run --name kda-work02-docker -e POSTGRES_PASSWORD=password -e POSTGRES_USER=postgre -e POSTGRES_DB=work02 -d -p 5432:5432 -v /var/lib/postgres:/var/lib/postgresql/data --network work postgres:14
     kda@otus-db-postgre-work02:~$ docker ps
@@ -164,7 +164,7 @@
 	e3ec7e29095c   postgres:14   "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   kda-work02-docker
 
 	```
-17. Делаем контейнер с клиентом и пытаемся подключится. Первый раз не указал бд к какой подключаться и получил ошибку.	
+17. Сделал контейнер с клиентом и подключаемся. Первый раз не указал бд к какой подключаться и получил ошибку.	
 	```
 	kda@otus-db-postgre-work02:~$ docker run -it --network work postgres:14 psql -U postgre -h kda-work02-docker -p 5432
 	Password for user postgre:
@@ -204,9 +204,9 @@
 
 	```
 19. Подключился со своей машины к серверу с помощью pgadmin4
-	вставить рисунок
+	(connect from pgadmin)[https://github.com/jfdhdss/OTUS_Postgresql_course2024/blob/main/pic/pgadmin.png]
 	
-20. Удаляем контайнер. Как правильно останавливать базу данных в контейнере, чтобы не потерять данные?
+20. Удалил контайнер. Как правильно останавливать базу данных в контейнере, чтобы не потерять данные?
 	```
 	kda@otus-db-postgre-work02:~$ docker rm -f kda-work02-docker
 	kda-work02-docker
@@ -214,7 +214,7 @@
 	CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 	
 	```
-21. Создаем контейнер заново
+21. Создал контейнер заново
 	```
 	kda@otus-db-postgre-work02:~$ docker run --name kda-work02-docker -e POSTGRES_PASSWORD=password -e POSTGRES_USER=postgre -e POSTGRES_DB=work02 -d -p 5432:5432 -v /var/lib/postgres:/var/lib/postgresql/data --network work postgres:14
 	542b702fd2ba351d49be03a7fbc5d8341d809fb191b8bd6028b995eda94e5a58
@@ -223,7 +223,7 @@
 	542b702fd2ba   postgres:14   "docker-entrypoint.s…"   6 seconds ago   Up 5 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   kda-work02-docker
 
 	```
-22. Подключился котейнером с клиентом к серверу и проверил данные.
+22. Подключился котейнером с клиентом к серверу и проверил данные. Данные остались после удаления.
 	```
 	kda@otus-db-postgre-work02:~$ docker run -it --network work postgres:14 psql -U postgre work02  -h kda-work02-docker -p 5432
 	Password for user postgre:
