@@ -231,7 +231,7 @@
 	drw
 	xr-xr-x  3 postgres postgres 4096 May 20 08:53 vdb1
 	```
-14. Переместил каталог /var/lib/postgresql/15 в /mnt/vdb1/data. При запуске ошибка. Каталог /var/lib/postgresql/15/main пустой. А в конфиге он прописан /var/lib/postgresql/15/main
+14. Переместил каталог /var/lib/postgresql/15 в /mnt/vdb1/data. При запуске кластера ошибка, потому что каталог /var/lib/postgresql/15/main пустой. А в конфиге он прописан /var/lib/postgresql/15/main
 	```
 	kda@otus-home-wor3:/var/lib/postgresql/15$ sudo mv /var/lib/postgresql/15 /mnt/vdb1/data
 	kda@otus-home-wor3:/var/lib/postgresql/15$ sudo -u postgres pg_ctlcluster 15 main start
