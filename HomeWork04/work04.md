@@ -65,7 +65,7 @@
 	postgres@otus-home-work04:/etc/postgresql/16/main$
 	```
 5. На сайте pgtune сконфигурировал настройки в зависимости от характеристик ВМ
-Вставить рисунок
+	![pgtune](https://raw.githubusercontent.com/jfdhdss/OTUS_Postgresql_course2024/main/pic/pgtune.png)
 6. Создал файл с настройками и применил их(перезапустил postgresql)
 	```
 	postgres@otus-home-work04:/etc/postgresql/16/main/conf.d$ nano pgtune.conf
