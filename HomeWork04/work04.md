@@ -175,5 +175,55 @@
 	tps = 651.558267 (without initial connection time)
 	```
 	Результат стал лучше tps = 651.558267 против tps = 650.314008
+	
+9. Установил парметр synchronous_commit = off на дефолтных параметрах postgre. Результат прям очень хорошоий), 595 против 2319 транзакци в секунду.
+```
+	postgres@work04:/home/kda$ pgbench -c 50 -j 2 -P 10 -T 60 test
+	pgbench (16.3 (Ubuntu 16.3-1.pgdg20.04+1))
+	starting vacuum...end.
+	progress: 10.0 s, 652.1 tps, lat 75.403 ms stddev 81.900, 0 failed
+	progress: 20.0 s, 561.7 tps, lat 88.117 ms stddev 102.172, 0 failed
+	progress: 30.0 s, 580.6 tps, lat 86.985 ms stddev 121.097, 0 failed
+	progress: 40.0 s, 597.8 tps, lat 83.352 ms stddev 97.031, 0 failed
+	progress: 50.0 s, 605.1 tps, lat 82.776 ms stddev 108.348, 0 failed
+	progress: 60.0 s, 570.7 tps, lat 87.795 ms stddev 122.035, 0 failed
+	transaction type: <builtin: TPC-B (sort of)>
+	scaling factor: 1
+	query mode: simple
+	number of clients: 50
+	number of threads: 2
+	maximum number of tries: 1
+	duration: 60 s
+	number of transactions actually processed: 35730
+	number of failed transactions: 0 (0.000%)
+	latency average = 83.935 ms
+	latency stddev = 105.980 ms
+	initial connection time = 60.967 ms
+	tps = 595.010564 (without initial connection time)
+
+
+	postgres@work04:/home/kda$ pgbench -c 50 -j 2 -P 10 -T 60 test
+	pgbench (16.3 (Ubuntu 16.3-1.pgdg20.04+1))
+	starting vacuum...end.
+	progress: 10.0 s, 2286.9 tps, lat 21.624 ms stddev 17.283, 0 failed
+	progress: 20.0 s, 2318.2 tps, lat 21.510 ms stddev 18.655, 0 failed
+	progress: 30.0 s, 2331.7 tps, lat 21.380 ms stddev 17.667, 0 failed
+	progress: 40.0 s, 2345.7 tps, lat 21.253 ms stddev 17.812, 0 failed
+	progress: 50.0 s, 2310.4 tps, lat 21.580 ms stddev 17.995, 0 failed
+	progress: 60.0 s, 2323.3 tps, lat 21.451 ms stddev 17.606, 0 failed
+	transaction type: <builtin: TPC-B (sort of)>
+	scaling factor: 1
+	query mode: simple
+	number of clients: 50
+	number of threads: 2
+	maximum number of tries: 1
+	duration: 60 s
+	number of transactions actually processed: 139212
+	number of failed transactions: 0 (0.000%)
+	latency average = 21.478 ms
+	latency stddev = 17.858 ms
+	initial connection time = 60.058 ms
+	tps = 2319.446644 (without initial connection time)
+```
 
 
